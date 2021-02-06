@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${adapters.h2.url}
+    driver-class-name: ${adapters.h2.driver}
+    username: ${adapters.h2.username}
+    password: ${adapters.h2.password}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+
+management:
+  server:
+    port: 8081
+
+logging:
+  level:
+    com.demo: INFO
+
+adapters:
+  h2:
+    url: jdbc:h2:mem:ads;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    username: demo
+    password: demo
+    driver: org.h2.Driver
+
+data-source:
+  sources:
+    - first:
+      file-name: "PIxSyyrIKFORrCXfMYqZBI.csv"
+      type: "csv"
